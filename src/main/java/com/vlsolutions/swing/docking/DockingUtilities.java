@@ -25,9 +25,6 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Window;
-import java.awt.peer.LightweightPeer;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -301,27 +298,21 @@ public class DockingUtilities {
    */
   public static boolean isHeavyWeightComponent(Component comp) {
     if (comp instanceof Container) {
-      // short cut
-      @SuppressWarnings("deprecation")
-      Object peer = comp.getPeer();
-      if (!(peer == null || peer instanceof LightweightPeer)) {
-        // it's not a lightweight
-        return true;
-      } else {
-        // long way
-        Container c = (Container) comp;
-        for (int i = 0; i < c.getComponentCount(); i++) {
-          Component child = c.getComponent(i);
-          if (isHeavyWeightComponent(child)) {
-            return true;
-          }
+      Container c = (Container) comp;
+      for (int i = 0; i < c.getComponentCount(); i++) {
+        Component child = c.getComponent(i);
+        if (isHeavyWeightComponent(child)) {
+          return true;
         }
-        return false;
       }
+      return false;
     } else {
-      @SuppressWarnings("deprecation")
-      Object peer = comp.getPeer();
-      return !(peer == null || peer instanceof LightweightPeer);
+      // was
+      // return !(peer == null || peer instanceof LightweightPeer);
+      // now
+      //       return comp.isDisplayable();
+      // takes care of the 1st case, but what about the 2nd case?
+      return comp.isDisplayable();
     }
   }
 
@@ -336,6 +327,8 @@ public class DockingUtilities {
 
   /** Returns the mouse location on screen or null if ran in an untrusted environement/ java 1.4 */
   public static Point getMouseLocation() {
+    return java.awt.MouseInfo.getPointerInfo().getLocation();
+    /*
     try {
       // Point mouseLocation = MouseInfo.getPointerInfo().getLocation();
       // this class in not compatible with 1.4
@@ -349,12 +342,13 @@ public class DockingUtilities {
       Method getLocationMethod = pointerInfoClass.getMethod("getLocation", noArgs);
       Point mouseLocation = (Point) getLocationMethod.invoke(pointerInfo, (Object[]) null);
       return mouseLocation;
-    } catch (ClassNotFoundException ignore) {
-    } catch (NoSuchMethodException ignore) {
-    } catch (IllegalAccessException e) {
-    } catch (InvocationTargetException ignore) {
+    } catch (ClassNotFoundException
+             | NoSuchMethodException
+             | IllegalAccessException
+             | InvocationTargetException ignore) {
     }
     return null;
+    */
   }
 
   /** packs a detached dockable, regardless of its type (frame or dialog) */
