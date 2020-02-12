@@ -1,7 +1,7 @@
 /*
     VLDocking Framework 3.0
     Copyright Lilian Chamontin, 2004-2013
-    
+
     www.vldocking.com
     vldocking@googlegroups.com
 ------------------------------------------------------------------------
@@ -18,9 +18,10 @@ You can read the complete license here :
 
 package com.vlsolutions.swing.docking;
 
-/** An interface used to find a dockable (when read from an input stream like XML)
- * when the only information given is its DockKey id.
- * 
+/**
+ * An interface used to find a dockable (when read from an input stream like XML) when the only
+ * information given is its DockKey id.
+ *
  * <p>This is mainly to allow auto-registration of new dockables when loading a new workspace.
  *
  * @author Lilian Chamontin, VLSolutions
@@ -28,9 +29,9 @@ package com.vlsolutions.swing.docking;
  */
 public interface DockableResolver {
 
-	/** Returns the dockable which should be associated to this DockKey identifier, or null if 
-	 * not found.
-	 */
-	public Dockable resolveDockable(String keyName);
-
+  /**
+   * Returns the dockable which should be associated to this DockKey identifier, or null if not
+   * found.
+   */
+  public Dockable resolveDockable(String keyName);
 }
