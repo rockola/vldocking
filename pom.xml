@@ -88,6 +88,20 @@
 	  <version>3.0.0</version>
 	</plugin>
 	<plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>1.6.0</version>
+          <configuration>
+	    <executable>java</executable>
+	    <arguments>
+	      <argument>-classpath</argument>
+	      <classpath/>
+	      <argument>com.locriangray.vldockingSampleApp.MyFirstFrame2</argument>
+	    </arguments>
+	  </configuration>
+	</plugin>
+	<!-- -->
+	<plugin>
 	  <groupId>org.apache.maven.plugins</groupId>
 	  <artifactId>maven-eclipse-plugin</artifactId>
 	  <version>2.9</version>
