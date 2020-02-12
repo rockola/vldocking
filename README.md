@@ -13,7 +13,7 @@ See https://code.google.com/p/vldocking/ for more information, tutorials etc.
 
 * Code is formatted according to the [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html).
 * Some fixes were made to make the library run on Java 8.
-* Tutorial 1 is included as a sample application. To run: ```mvn compile``` 
+* Tutorial 1 is included as a sample application. To run: ```mvn compile``` and ```mvn exec:exec```
 
 (these changes are by upstream)
 
