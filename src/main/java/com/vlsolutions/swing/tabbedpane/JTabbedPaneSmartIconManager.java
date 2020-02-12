@@ -86,8 +86,7 @@ public class JTabbedPaneSmartIconManager implements MouseListener, MouseMotionLi
         if (pressedIcon.onMouseReleased(eSmart)) {
           tabbedPane.repaint(r.x, r.y, r.width, r.height); // no choice but trigger a repaint
         }
-      } catch (
-          Exception ignore) { // bug database : 5075526 this is to remove the stack trace
+      } catch (Exception ignore) { // bug database : 5075526 this is to remove the stack trace
       }
       pressedIcon = null;
     }
@@ -141,8 +140,7 @@ public class JTabbedPaneSmartIconManager implements MouseListener, MouseMotionLi
                   e.isPopupTrigger(),
                   e.getButton());
           if (smartIcon.onMousePressed(eSmart)) {
-            tabbedPane.repaint(
-                r.x, r.y, r.width, r.height); // no choice but trigger a repaint
+            tabbedPane.repaint(r.x, r.y, r.width, r.height); // no choice but trigger a repaint
           }
           pressedIcon = smartIcon;
           pressedTab = targetTab;

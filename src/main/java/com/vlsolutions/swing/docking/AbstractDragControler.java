@@ -369,7 +369,7 @@ abstract class AbstractDragControler implements DragControler {
         return false;
       }
     } else {
-        /*if (underMouse == null){ */
+      /*if (underMouse == null){ */
       // not under a droppable zone
       DropProcess process = new DropProcess(e, dockableDragSource, umInfo);
       if (process.canDockableBeDetached() && process.checkDockableWillBeDetached()) {
@@ -430,7 +430,7 @@ abstract class AbstractDragControler implements DragControler {
           && underMouse
               instanceof
               DockDropReceiver) { // this one should always be true (although as it depends on
-                                  // implementation details, I prefer to keep it safe)
+        // implementation details, I prefer to keep it safe)
         // ok we've found a suitable swap pattern
         if (drop) {
           DockingUtilities.updateResizeWeights(desktop.getDockingPanel());

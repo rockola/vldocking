@@ -343,7 +343,7 @@ public class DockView extends JPanel implements DockDropReceiver, SingleDockable
   public void uninstallDocking(DockingDesktop desktop) {
     if (title
         != null) { // safety check, as removing is sometimes cascaded and done once more than it
-                   // should be 2005/12/09
+      // should be 2005/12/09
       // System.out.println("uninstallDocking VIEW on " + dockable.getDockKey());
 
       desktop.uninstallDockableDragSource(title);
